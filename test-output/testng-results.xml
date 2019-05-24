@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="3" passed="3">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="9046" started-at="2019-05-24T12:14:21Z" finished-at="2019-05-24T12:14:30Z">
+    <groups>
+      <group name="MeetingWithAPI">
+        <method signature="MeetingWithAPI.MeetingWithTest()[pri:1, instance:Validatevisitor.MeetingWithAPI@39aeed2f]" name="MeetingWithTest" class="Validatevisitor.MeetingWithAPI"/>
+        <method signature="MeetingWithAPI.invalidMeetingWith()[pri:3, instance:Validatevisitor.MeetingWithAPI@39aeed2f]" name="invalidMeetingWith" class="Validatevisitor.MeetingWithAPI"/>
+        <method signature="MeetingWithAPI.invalidToken()[pri:2, instance:Validatevisitor.MeetingWithAPI@39aeed2f]" name="invalidToken" class="Validatevisitor.MeetingWithAPI"/>
+      </group> <!-- MeetingWithAPI -->
+    </groups>
+    <test name="Default test" duration-ms="9046" started-at="2019-05-24T12:14:21Z" finished-at="2019-05-24T12:14:30Z">
+      <class name="Validatevisitor.MeetingWithAPI">
+        <test-method status="PASS" signature="MeetingWithTest()[pri:1, instance:Validatevisitor.MeetingWithAPI@39aeed2f]" name="MeetingWithTest" duration-ms="5715" started-at="2019-05-24T17:44:21Z" finished-at="2019-05-24T17:44:27Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- MeetingWithTest -->
+        <test-method status="PASS" signature="invalidToken()[pri:2, instance:Validatevisitor.MeetingWithAPI@39aeed2f]" name="invalidToken" duration-ms="1544" started-at="2019-05-24T17:44:27Z" finished-at="2019-05-24T17:44:28Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- invalidToken -->
+        <test-method status="PASS" signature="invalidMeetingWith()[pri:3, instance:Validatevisitor.MeetingWithAPI@39aeed2f]" name="invalidMeetingWith" duration-ms="1733" started-at="2019-05-24T17:44:28Z" finished-at="2019-05-24T17:44:30Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- invalidMeetingWith -->
+      </class> <!-- Validatevisitor.MeetingWithAPI -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
