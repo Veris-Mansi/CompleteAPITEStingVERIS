@@ -119,5 +119,35 @@ public class Resourcevalidatevisitor {
 		JsonPath path = new JsonPath(response);
 		System.out.println("Response "+response);
 	}
+	public static String getVisitorlastactivityData(String v_id,String token)
+	{
 
+		RestAssured.baseURI="https://sandbox.veris.in";
+		Response res =given().
+				queryParam("action", "in").
+				headers("Content-Type","application/json").headers("Authorization","gatekeeper "+token+"").
+				body(PayloaddataTerminallogin.terminalLogin()).
+				when().get("/api/v4/visitor/"+v_id+"/activity/").
+				then().assertThat().statusCode(200).extract().response();
+		String response = res.asString();
+		JsonPath path = new JsonPath(response);
+		System.out.println("Response "+response);
+		String workflow=path.getString("workflow");
+		return workflow;
+	}
+	public static void getVisitorWFData(String v_id,String workflow_id,String token)
+	{
+
+		RestAssured.baseURI="https://sandbox.veris.in";
+		Response res =given().
+				queryParam("action", "in").
+				headers("Content-Type","application/json").headers("Authorization","gatekeeper "+token+"").
+				body(PayloaddataTerminallogin.terminalLogin()).
+				when().get("/api/v4/visitor/"+v_id+"/workflow/"+workflow_id+"/").
+				then().assertThat().statusCode(200).extract().response();
+		String response = res.asString();
+		JsonPath path = new JsonPath(response);
+		System.out.println("Response "+response);
+		
+	}
 }

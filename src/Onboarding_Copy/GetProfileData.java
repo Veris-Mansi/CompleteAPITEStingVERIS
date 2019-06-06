@@ -17,11 +17,11 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import Files.Resource;
 import io.restassured.RestAssured;
-
+import Files.*;
 public class GetProfileData {
 
 	String token2 = "aab85467851b7e1947919fe122393201a0fdba6c";
-	String token=PayLoadData.getProfileData();
+	String token=ResourcesPortalLogin.portalLogin();
 	String invalid_token=PayLoadData.getProfileIncorrectData();
 	@Test(groups="getProfile")
 	public void getProfilData()
@@ -34,8 +34,8 @@ public class GetProfileData {
 		String response = res.asString();
 		JsonPath path = new JsonPath(response);
 		System.out.println("Response "+response);
-		String uid=path.getString("uid");
-		System.out.println("uid "+uid);
+		String pk=path.getString("pk");
+		System.out.println("pk "+pk);
 	}
 	@Test(groups="getProfile")
 	public void getDataInvalidToken()
@@ -57,31 +57,31 @@ public class GetProfileData {
 		when().get("api/v2/profile/").
 		then().assertThat().statusCode(404).and().body("detail", equalTo("User Profile is not available."));
 	}
-	@Test(groups="UpdateProfile")
-	public void updateProfilData()
-	{
-		RestAssured.baseURI="https://sandbox.veris.in";
-		Response res =given().urlEncodingEnabled(true).
-				formParam("first_name", "Mansi").
-				formParam("last_name", "Sahu").
-				formParam("profile_picture", "").
-				formParam("email", "mansi.sahu@veris.in").
-		headers("Authorization","token "+token).
-		when().post("api/v2/profile/").
-		then().assertThat().statusCode(200).extract().response();
-		String response = res.asString();
-		JsonPath path = new JsonPath(response);
-		System.out.println("Response "+response);
-	}
-	@Test(groups="UpdateProfile")
-	public void getUpdatedDataInvalidToken()
-	{
-		RestAssured.baseURI="https://sandbox.veris.in";
-		
-		given().
-		headers("Content-Type","application/json").headers("Authorization","token "+invalid_token).
-		when().post("api/v2/profile/").
-		then().assertThat().statusCode(401).and().body("detail", equalTo("Invalid token."));
-	}
+//	@Test(groups="UpdateProfile")
+//	public void updateProfilData()
+//	{
+//		RestAssured.baseURI="https://sandbox.veris.in";
+//		Response res =given().urlEncodingEnabled(true).
+//				formParam("first_name", "Mansi").
+//				formParam("last_name", "Sahu").
+//				formParam("profile_picture", "").
+//				formParam("email", "mansi.sahu@veris.in").
+//		headers("Authorization","token "+token).
+//		when().post("api/v2/profile/").
+//		then().assertThat().statusCode(200).extract().response();
+//		String response = res.asString();
+//		JsonPath path = new JsonPath(response);
+//		System.out.println("Response "+response);
+//	}
+//	@Test(groups="UpdateProfile")
+//	public void getUpdatedDataInvalidToken()
+//	{
+//		RestAssured.baseURI="https://sandbox.veris.in";
+//		
+//		given().
+//		headers("Content-Type","application/json").headers("Authorization","token "+invalid_token).
+//		when().post("api/v2/profile/").
+//		then().assertThat().statusCode(401).and().body("detail", equalTo("Invalid token."));
+//	}
 	
 }

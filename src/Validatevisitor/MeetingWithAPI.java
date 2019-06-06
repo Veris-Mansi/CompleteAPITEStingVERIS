@@ -10,11 +10,11 @@ import org.testng.annotations.Test;
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
-
+import Files.*;
 public class MeetingWithAPI {
 
 	String user_pk="";
-	String token="563a5f3a38c46025406b8d9af5465b0c25612fac";
+	String token=ResourcesTerminalLogin.login();
 	String invalid_token="291b12850a914d0dba55bd5aa62b16d3769797";
 	String meeting_with="sha";
 	String invalid_meeting_with="sh";
@@ -27,7 +27,7 @@ public class MeetingWithAPI {
 				queryParam("contact", meeting_with).
 				headers("Authorization","gatekeeper "+token).
 				when().get("/api/v2/meeting-with/").
-				then().assertThat().statusCode(200).and().body("name[0]", equalTo("shailendra Tiranga")).extract().response();
+				then().assertThat().statusCode(200).and().body("name[0]", equalTo("Shaka Kumar")).extract().response();
 		String response = res.asString();
 		JsonPath path = new JsonPath(response);
 		System.out.println("Response "+response);
@@ -45,7 +45,6 @@ public class MeetingWithAPI {
 	@Test(priority=3,groups="MeetingWithAPI")
 	public void invalidMeetingWith()
 	{
-
 		RestAssured.baseURI="https://sandbox.veris.in";
 		Response res =given().
 				queryParam("contact", invalid_meeting_with).	
@@ -57,5 +56,6 @@ public class MeetingWithAPI {
 		{
 			assert true;
 		}
+	
 	}
 }

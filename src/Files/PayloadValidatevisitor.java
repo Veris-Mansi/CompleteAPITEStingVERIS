@@ -5,7 +5,7 @@ public class PayloadValidatevisitor {
 	public static String validateVisitorMobile()
 	{
 		String s="{\r\n" + 
-				"            \"visitor\":\"9993483676\",\r\n" + 
+				"            \"visitor\":\"+919035111511\",\r\n" + 
 				"            \"action\": \"in\"\r\n" + 
 				"}";
 		return s;
@@ -31,7 +31,7 @@ public class PayloadValidatevisitor {
 	public static String validateVisitorEmail()
 	{
 		String s="{\r\n" + 
-				"            \"visitor\":\"mansi.sahu@veris.in\",\r\n" + 
+				"            \"visitor\":\"shailendra.tiranga@veris.in\",\r\n" + 
 				"            \"action\": \"in\"\r\n" + 
 				"}";
 		return s;
@@ -47,7 +47,7 @@ public class PayloadValidatevisitor {
 	public static String validQR()
 	{
 		String s="{\r\n" + 
-				"            \"visitor\":\"75111903-af03-4c69-92e6-041ef81a7a47\",\r\n" + 
+				"            \"visitor\":\"2b237f67-de85-47d9-bbea-40f277a00b53\",\r\n" + 
 				"            \"action\": \"in\"\r\n" + 
 				"}";
 		return s;
@@ -55,7 +55,7 @@ public class PayloadValidatevisitor {
 	public static String invalidActivity()
 	{
 		String s="{\r\n" + 
-				"            \"visitor\":\"9993483676\",\r\n" + 
+				"            \"visitor\":\"+919035111511\",\r\n" + 
 				"            \"action\": \"inqqqq\"\r\n" + 
 				"}";
 		return s;

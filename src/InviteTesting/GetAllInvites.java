@@ -10,13 +10,14 @@ import static org.hamcrest.Matchers.equalTo;
 
 import org.testng.annotations.Test;
 
+import Files.ResourcesPortalLogin;
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 
 public class GetAllInvites {
 
-	String token="d0b7350410921c14c28d7c82fd4438e8ab2f0b96";
+	String token=ResourcesPortalLogin.portalLogin();
 	String invalid_token="19fbca94eb937121ee1446d164b851b9d13f04a";
 	String venue_id="";
 	

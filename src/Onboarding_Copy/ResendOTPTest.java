@@ -18,13 +18,13 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 
 public class ResendOTPTest {
-	@Test(priority=5,description="Requesting OTP for correct credentials",dependsOnMethods="emptyCredentials")
+	@Test(priority=5,description="Requesting OTP for correct credentials",dependsOnMethods="ResendemptyCredentials")
 	public static void ResendOTPTest()
 	{
 		RestAssured.baseURI="https://sandbox.veris.in";
 		given().
 		headers("Content-Type","application/json").body(PayLoadData.correctCredentials()).
-		when().post("/api/v2/one-time-password/").
+		when().post("/api/v2/resend-one-time-password/").
 		then().assertThat().statusCode(200).and().contentType(ContentType.JSON).and().body("otp_code_length",equalTo(5));
 	}
 	@Test(priority=2,description="Nine digit mobile no",dependsOnMethods="InvalidCountryCode")
@@ -33,17 +33,17 @@ public class ResendOTPTest {
 		RestAssured.baseURI="https://sandbox.veris.in";
 		given().
 		headers("Content-Type","application/json").body(PayLoadData.incorrectCredentials9()).
-		when().post("/api/v2/one-time-password/").
+		when().post("/api/v2/resend-one-time-password/").
 		then().assertThat().statusCode(400).and().contentType(ContentType.JSON);
 	}
-	@Test(priority=3,description="Eleven digit mobile no",dependsOnMethods="InvalidMobileNoNine")
+	@Test(priority=3,description="Eleven digit mobile no",dependsOnMethods="ResendInvalidMobileNoNine")
 	public void ResendInvalidMobileNoEleven()
 	{
 		RestAssured.baseURI="https://sandbox.veris.in";
 
 		given().
 		headers("Content-Type","application/json").body(PayLoadData.incorrectCredentials11()).
-		when().post("/api/v2/one-time-password/").
+		when().post("/api/v2/resend-one-time-password/").
 		then().assertThat().statusCode(400).and().contentType(ContentType.JSON);
 	}
 	@Test(priority=1,description="Invalid country code")
@@ -53,17 +53,17 @@ public class ResendOTPTest {
 
 		given().
 		headers("Content-Type","application/json").body(PayLoadData.invalidCountrycode()).
-		when().post("/api/v2/one-time-password/").
+		when().post("/api/v2/resend-one-time-password/").
 		then().assertThat().statusCode(400).and().contentType(ContentType.JSON);
 	}
-	@Test(priority=4,description="Empty Credentials",dependsOnMethods="InvalidMobileNoEleven")
+	@Test(priority=4,description="Empty Credentials",dependsOnMethods="ResendInvalidMobileNoEleven")
 	public void ResendemptyCredentials()
 	{
 		RestAssured.baseURI="https://sandbox.veris.in";
 
 		given().
 		headers("Content-Type","application/json").body(PayLoadData.emptyContactNumber()).
-		when().post("/api/v2/one-time-password/").
+		when().post("/api/v2/resend-one-time-password/").
 		then().assertThat().statusCode(400).and().contentType(ContentType.JSON);
 	}
 

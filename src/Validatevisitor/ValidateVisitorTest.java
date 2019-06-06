@@ -29,7 +29,7 @@ public class ValidateVisitorTest {
 	@Test(priority=2,groups="TerminalLogin")
 	public void Login()
 	{
-		token=ResourcesLogin.login();
+		token=ResourcesTerminalLogin.login();
 		System.out.println("token is "+token);
 	}
 	

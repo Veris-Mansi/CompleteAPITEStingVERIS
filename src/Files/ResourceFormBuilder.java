@@ -10,12 +10,14 @@ import io.restassured.response.Response;
 
 public class ResourceFormBuilder {
 
-	
+	static String token="8b5e0ca6032acc5da7a6bd9682ee9fa11026dab5";
+
+	static String invalidtoken="8b5e0ca6032acda7a6bd9682ee9fa11026dab5";
 	public static void invalidOrganization()
 	{
 		RestAssured.baseURI="https://sandbox.veris.in";
 		given().
-		headers("Content-Type","application/json").headers("Authorization","token 8f62fd0d5c5d5f43c22bf18e841d7117b3f20514").
+		headers("Content-Type","application/json").headers("Authorization","token "+token).
 		body(PayLoadDataFormBuilder.AddWorkflow()).
 		when().post(ResourceFormBuilder.AddWorkflowInvalidOrganization()).
 		then().assertThat().statusCode(403).and().contentType(ContentType.JSON).body("detail", equalTo("You do not have permission to perform this action."));
@@ -25,7 +27,7 @@ public class ResourceFormBuilder {
 	{
 		RestAssured.baseURI="https://sandbox.veris.in";
 		given().
-		headers("Content-Type","application/json").headers("Authorization","token 8we62fd0d5c5d5f43c22bf18e841d7117b3f20514").
+		headers("Content-Type","application/json").headers("Authorization","token "+invalidtoken).
 		body(PayLoadDataFormBuilder.AddWorkflow()).
 		when().post(ResourceFormBuilder.AddWorkflow()).
 		then().assertThat().statusCode(401).and().contentType(ContentType.JSON).body("detail", equalTo("Invalid token."));
@@ -35,7 +37,7 @@ public class ResourceFormBuilder {
 	{
 		RestAssured.baseURI="https://sandbox.veris.in";
 		 Response res = given().
-		headers("Content-Type","application/json").headers("Authorization","token 8f62fd0d5c5d5f43c22bf18e841d7117b3f20514").
+		headers("Content-Type","application/json").headers("Authorization","token "+token).
 		when().get(ResourceFormBuilder.AddWorkflow()).
 		then().assertThat().statusCode(200).extract().response();
 		 String response=res.asString();
@@ -73,7 +75,7 @@ public class ResourceFormBuilder {
 	{
 		//RestAssured.baseURI="https://sandbox.veris.in";
 		Response res = given().
-		headers("Content-Type","application/json").headers("Authorization","token 8f62fd0d5c5d5f43c22bf18e841d7117b3f20514").
+		headers("Content-Type","application/json").headers("Authorization","token "+token).
 		body(PayLoadDataFormBuilder.AddWorkflow()).
 		when().post(ResourceFormBuilder.AddWorkflow()).
 		then().assertThat().statusCode(201).and().contentType(ContentType.JSON).extract().response();
@@ -88,7 +90,7 @@ public class ResourceFormBuilder {
 	{
 		RestAssured.baseURI="https://sandbox.veris.in";
 		Response res = given().
-		headers("Content-Type","application/json").headers("Authorization","token 8f62fd0d5c5d5f43c22bf18e841d7117b3f20514").
+		headers("Content-Type","application/json").headers("Authorization","token "+token).
 		body(PayLoadDataFormBuilder.addCustomScreens()).
 		when().post(ResourceFormBuilder.screen()).
 		then().assertThat().statusCode(201).and().contentType(ContentType.JSON).extract().response();

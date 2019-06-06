@@ -12,15 +12,16 @@ import org.testng.annotations.Test;
 //create invite with wrong format
 
 import Files.PayloaddataInvite;
+import Files.ResourcesPortalLogin;
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 
 public class CreateInvite {
 
-	String token="d0b7350410921c14c28d7c82fd4438e8ab2f0b96";
+	String token=ResourcesPortalLogin.portalLogin();
 	String invalid_token="19fbca94eb937121ee1446d164b851b9d13f04a";	
-
+	String not_allowed_token="37861fd59be46f7211b9316b1bdb5b8794b9c750";
 	@Test(groups="createInvite")
 	public void invalidToken()
 	{
@@ -93,7 +94,7 @@ public class CreateInvite {
 		RestAssured.baseURI="https://sandbox.veris.in";
 		Response res =given().
 				headers("Content-Type","application/json").headers("Authorization","token "+token).
-				body(PayloaddataInvite.createinviteEmail()).
+				body(PayloaddataInvite.invalidEmail()).
 				when().post("/api/v2/passes/").
 				then().assertThat().statusCode(400).and().extract().response();
 
@@ -140,4 +141,23 @@ public class CreateInvite {
 		System.out.println("_id "+_id);
 
 	}
+	@Test(groups="createInvite")
+	public void NopermissioncreateInvitePhone()
+	{
+		RestAssured.baseURI="https://sandbox.veris.in";
+		Response res =given().
+				headers("Content-Type","application/json").headers("Authorization","token "+not_allowed_token).
+				body(PayloaddataInvite.createinvite()).
+				when().post("/api/v2/passes/").
+				then().assertThat().statusCode(400).body("venue[0]", equalTo("Not allowed to create pass for this venue.")).and().extract().response();
+
+		String response = res.asString();
+
+		JsonPath path = new JsonPath(response);
+		System.out.println("Response "+response);
+		
+
+	}
+
+	
 }

@@ -9,11 +9,11 @@ import Files.PayLoadData;
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
-
-public class updateProfileData {
+import Files.*
+;public class updateProfileData {
 
 	String token2 = "aab85467851b7e1947919fe122393201a0fdba6c";
-	String token=PayLoadData.getProfileData();
+	String token=ResourcesPortalLogin.portalLogin();
 	String invalid_token=PayLoadData.getProfileIncorrectData();
 	@Test(priority=1)
 	public void updateProfilData()

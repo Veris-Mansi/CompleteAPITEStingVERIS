@@ -6,12 +6,12 @@ public class PayloaddataInvite {
 	{
 		String s="{\r\n" + 
 				"  \"guests\": {\r\n" + 
-				"    \"phones\": [\"+919993483676\"],\r\n" + 
+				"    \"phones\": [\"+919035111511\"],\r\n" + 
 				"    \"emails\": []\r\n" + 
 				"  },\r\n" + 
-				"  \"venue\": \"https://sandbox.veris.in/api/v2/venues/17/\",\r\n" + 
-				"  \"valid_from\": \"2019-05-24T13:00:00Z\",\r\n" + 
-				"  \"valid_till\": \"2019-05-24T15:00:00Z\"\r\n" + 
+				"  \"venue\": \"https://sandbox.veris.in/api/v2/venues/62/\",\r\n" + 
+				"  \"valid_from\": \"2025-12-29T13:00:00Z\",\r\n" + 
+				"  \"valid_till\": \"2027-05-28T15:00:00Z\"\r\n" + 
 				"}";
 		
 		return s;
@@ -24,11 +24,11 @@ public class PayloaddataInvite {
 		String s="{\r\n" + 
 				"  \"guests\": {\r\n" + 
 				"    \"phones\": [],\r\n" + 
-				"    \"emails\": [\"zuvad@mailhub.top\"]\r\n" + 
+				"    \"emails\": [\"vihid@top-mailer.net\"]\r\n" + 
 				"  },\r\n" + 
-				"  \"venue\": \"https://sandbox.veris.in/api/v2/venues/17/\",\r\n" + 
-				"  \"valid_from\": \"2019-05-24T13:00:00Z\",\r\n" + 
-				"  \"valid_till\": \"2019-05-24T15:00:00Z\"\r\n" + 
+				"  \"venue\": \"https://sandbox.veris.in/api/v2/venues/62/\",\r\n" + 
+				"  \"valid_from\": \"2025-12-29T13:00:00Z\",\r\n" + 
+				"  \"valid_till\": \"2027-05-28T15:00:00Z\"\r\n" + 
 				"}";
 		return s;
 	}
@@ -39,9 +39,9 @@ public class PayloaddataInvite {
 				"    \"phones\": [],\r\n" + 
 				"    \"emails\": [\"s\"]\r\n" + 
 				"  },\r\n" + 
-				"  \"venue\": \"https://sandbox.veris.in/api/v2/venues/17/\",\r\n" + 
-				"  \"valid_from\": \"2019-05-24T13:00:00Z\",\r\n" + 
-				"  \"valid_till\": \"2019-05-24T15:00:00Z\"\r\n" + 
+				"  \"venue\": \"https://sandbox.veris.in/api/v2/venues/62/\",\r\n" + 
+				"  \"valid_from\": \"2025-05-24T13:00:00Z\",\r\n" + 
+				"  \"valid_till\": \"2027-05-24T15:00:00Z\"\r\n" + 
 				"}";
 		return s;
 	}
@@ -53,9 +53,9 @@ public class PayloaddataInvite {
 				"    \"phones\": [\"+9199992222\"],\r\n" + 
 				"    \"emails\": []\r\n" + 
 				"  },\r\n" + 
-				"  \"venue\": \"https://sandbox.veris.in/api/v2/venues/17/\",\r\n" + 
-				"  \"valid_from\": \"2019-05-24T13:00:00Z\",\r\n" + 
-				"  \"valid_till\": \"2019-05-24T15:00:00Z\"\r\n" + 
+				"  \"venue\": \"https://sandbox.veris.in/api/v2/venues/62/\",\r\n" + 
+				"  \"valid_from\": \"2025-05-24T13:00:00Z\",\r\n" + 
+				"  \"valid_till\": \"2027-05-24T15:00:00Z\"\r\n" + 
 				"}";
 		return s;
 	}
@@ -67,7 +67,7 @@ public class PayloaddataInvite {
 				"    \"phones\": [\"+919993483676\"],\r\n" + 
 				"    \"emails\": []\r\n" + 
 				"  },\r\n" + 
-				"  \"venue\": \"https://sandbox.veris.in/api/v2/venues/17/\",\r\n" + 
+				"  \"venue\": \"https://sandbox.veris.in/api/v2/venues/62/\",\r\n" + 
 				"  \"valid_from\": \"2019-05-24T13:00:00Z\",\r\n" + 
 				"  \"valid_till\": \"2019-05-24T15:00:0Z\"\r\n" + 
 				"}";
@@ -80,7 +80,7 @@ public class PayloaddataInvite {
 				"    \"phones\": [\"+919993483676\"],\r\n" + 
 				"    \"emails\": []\r\n" + 
 				"  },\r\n" + 
-				"  \"venue\": \"https://sandbox.veris.in/api/v2/venues/17/\",\r\n" + 
+				"  \"venue\": \"https://sandbox.veris.in/api/v2/venues/62/\",\r\n" + 
 				"  \"valid_from\": \"2019-05-22T13:00:00Z\",\r\n" + 
 				"  \"valid_till\": \"2019-05-24T15:00:00Z\"\r\n" + 
 				"}";
@@ -93,7 +93,7 @@ public class PayloaddataInvite {
 				"    \"phones\": [\"+919993483676\"],\r\n" + 
 				"    \"emails\": []\r\n" + 
 				"  },\r\n" + 
-				"  \"venue\": \"https://sandbox.veris.in/api/v2/venues/17/\",\r\n" + 
+				"  \"venue\": \"https://sandbox.veris.in/api/v2/venues/62/\",\r\n" + 
 				"  \"valid_from\": \"2019-05-24T13:00:00Z\",\r\n" + 
 				"  \"valid_till\": \"2018-05-22T15:00:00Z\"\r\n" + 
 				"}";

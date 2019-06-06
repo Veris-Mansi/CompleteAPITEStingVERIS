@@ -1,5 +1,6 @@
 package FormBuilderTesting;
 
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
 import static io.restassured.RestAssured.given;
@@ -36,5 +37,12 @@ public class AddWorkflow {
 		int next_count=ResourceFormBuilder.getForms();
 		System.out.println("next count "+next_count);
 		AssertJUnit.assertEquals(next_count, prev_count+1);
+	}
+	
+	public static void main(String[] args) {
+		AddWorkflow w= new AddWorkflow();
+		w.invalidToken();
+		w.invalidOrganization();
+		w.AddWorkFlow();
 	}
 	}

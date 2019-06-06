@@ -10,11 +10,11 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
-
+import Files.*;
 public class CompleteTesting_Onboading {
 	
 	String token2 = "aab85467851b7e1947919fe122393201a0fdba6c";
-	String token=PayLoadData.getProfileData();
+	String token=ResourcesPortalLogin.portalLogin();
 	String invalid_token=PayLoadData.getProfileIncorrectData();
 	
 	@Test(groups ="OTP",priority=1,description="Invalid country code")
@@ -73,7 +73,7 @@ public class CompleteTesting_Onboading {
 
 		given().
 		headers("Content-Type","application/json").body(PayLoadData.invalidCountrycode()).
-		when().post("/api/v2/one-time-password/").
+		when().post("/api/v2/resend-one-time-password/").
 		then().assertThat().statusCode(400).and().contentType(ContentType.JSON);
 	}
 	@Test(groups ="ResendOTP",priority=7,description="Nine digit mobile no",dependsOnMethods="ResendInvalidCountryCode")
@@ -82,7 +82,7 @@ public class CompleteTesting_Onboading {
 		RestAssured.baseURI="https://sandbox.veris.in";
 		given().
 		headers("Content-Type","application/json").body(PayLoadData.incorrectCredentials9()).
-		when().post("/api/v2/one-time-password/").
+		when().post("/api/v2/resend-one-time-password/").
 		then().assertThat().statusCode(400).and().contentType(ContentType.JSON);
 	}
 	@Test(groups ="ResendOTP",priority=8,description="Eleven digit mobile no",dependsOnMethods="ResendInvalidMobileNoNine")
@@ -92,7 +92,7 @@ public class CompleteTesting_Onboading {
 
 		given().
 		headers("Content-Type","application/json").body(PayLoadData.incorrectCredentials11()).
-		when().post("/api/v2/one-time-password/").
+		when().post("/api/v2/resend-one-time-password/").
 		then().assertThat().statusCode(400).and().contentType(ContentType.JSON);
 	}
 	@Test(groups ="ResendOTP",priority=9,description="Empty Credentials",dependsOnMethods="ResendInvalidMobileNoEleven")
@@ -102,7 +102,7 @@ public class CompleteTesting_Onboading {
 
 		given().
 		headers("Content-Type","application/json").body(PayLoadData.emptyContactNumber()).
-		when().post("/api/v2/one-time-password/").
+		when().post("/api/v2/resend-one-time-password/").
 		then().assertThat().statusCode(400).and().contentType(ContentType.JSON);
 	}
 	@Test(groups ="ResendOTP",priority=10,description="Requesting OTP for correct credentials",dependsOnMethods="ResendemptyCredentials")
@@ -111,7 +111,7 @@ public class CompleteTesting_Onboading {
 		RestAssured.baseURI="https://sandbox.veris.in";
 		given().
 		headers("Content-Type","application/json").body(PayLoadData.correctCredentials()).
-		when().post("/api/v2/one-time-password/").
+		when().post("/api/v2/resend-one-time-password/").
 		then().assertThat().statusCode(200).and().contentType(ContentType.JSON).and().body("otp_code_length",equalTo(5));
 	}
 	@Test(groups="getProfile",priority=11)
@@ -125,8 +125,8 @@ public class CompleteTesting_Onboading {
 		String response = res.asString();
 		JsonPath path = new JsonPath(response);
 		System.out.println("Response "+response);
-		String uid=path.getString("uid");
-		System.out.println("uid "+uid);
+		String pk=path.getString("pk");
+		System.out.println("pk "+pk);
 	}
 	@Test(groups="getProfile",priority=12)
 	public void getDataInvalidToken()
@@ -174,6 +174,32 @@ public class CompleteTesting_Onboading {
 		when().post("api/v2/profile/").
 		then().assertThat().statusCode(401).and().body("detail", equalTo("Invalid token."));
 	}
-
-
+	@Test(priority=16,groups="logoutProfile")
+	public void logout_user()
+	{
+		RestAssured.baseURI="https://sandbox.veris.in";
+		given().
+		headers("Content-Type","application/json").headers("Authorization","token "+token).
+		when().post("/api/v2/logout/").
+		then().assertThat().statusCode(204);
+		
+	}
+	@Test(priority=17,groups="logoutProfile",dependsOnMethods="logout_user")
+	public void already_logout_user()
+	{
+		RestAssured.baseURI="https://sandbox.veris.in";
+		given().
+		headers("Content-Type","application/json").headers("Authorization","token "+token).
+		when().post("/api/v2/logout/").
+		then().assertThat().statusCode(401).and().body("detail", equalTo("Invalid token."));
+	}
+	public void logoutInvalidToken()
+	{
+		RestAssured.baseURI="https://sandbox.veris.in";
+		
+		given().
+		headers("Content-Type","application/json").headers("Authorization","token "+invalid_token).
+		when().get("/api/v2/logout/").
+		then().assertThat().statusCode(401).and().body("detail", equalTo("Invalid token."));
+	}
 }
